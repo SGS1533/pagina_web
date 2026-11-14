@@ -4,19 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#202a26">
-    <meta name="description" content="Galería de cuadros de Eva María Sopeña Torres. Un espacio para descubrir sus obras y ponerse en contacto con la autora.">
-    <title>Eva María Sopeña Torres — Galería de arte</title>
+    <meta name="description" content="Galería de arte de Eva María. Piezas artesanales únicas, hechas a mano y con mucho amor.">
+    <title>Eva María — Galería de arte</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
     <header class="site-header">
-      <a class="brand" href="#inicio" aria-label="Eva María Sopeña Torres, inicio">
-        <span class="brand-mark" aria-hidden="true">ES</span>
+      <a class="brand" href="#inicio" aria-label="Eva María, inicio">
+        <span class="brand-mark" aria-hidden="true">EM</span>
         <span class="brand-copy">
           <span class="brand-name">Eva María</span>
-          <span class="brand-subtitle">Sopeña Torres <span aria-hidden="true">·</span> Artista</span>
+          <span class="brand-subtitle">Artista</span>
         </span>
       </a>
 
@@ -40,7 +40,7 @@
           <div class="hero-copy">
             <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Galería de artista <span class="eyebrow-rule" aria-hidden="true"></span> Colección personal</p>
             <h1 id="hero-title">Un espacio para mirar <em>despacio.</em></h1>
-            <p class="hero-intro">Una galería dedicada a los cuadros de Eva María Sopeña Torres. Aquí cada obra tendrá su lugar, con sus fotografías y detalles originales.</p>
+            <p class="hero-intro">Acierta con el regalo artesanal perfecto; piezas únicas hechas a mano y creadas con mucho amor para transformar espacios. Sumérgete en la intrincada belleza de mis obras que narran una historia única en cada pincelada y en cada detalle.</p>
             <div class="hero-actions">
               <a class="button button-light" href="#galeria">Explorar la galería <span aria-hidden="true">↓</span></a>
               <a class="text-link text-link-light" href="#autora">Conocer a la autora <span aria-hidden="true">↗</span></a>
@@ -51,18 +51,22 @@
             </div>
           </div>
 
-          <div class="hero-art" role="img" aria-label="Marco reservado para una fotografía real de una obra">
+          <div class="hero-art">
             <span class="hero-art-index" aria-hidden="true">01</span>
             <div class="hero-frame">
-              <div class="hero-canvas">
-                <span class="placeholder-mark" aria-hidden="true"></span>
-                <span class="canvas-label">Fotografía real<br>por añadir</span>
+              <div class="hero-canvas" data-hero-collage role="img" aria-label="Collage con cuatro espacios para añadir fotografías">
+                <span class="artwork-collage" aria-hidden="true">
+                  <span class="collage-tile"><span class="collage-label">Foto 1</span></span>
+                  <span class="collage-tile"><span class="collage-label">Foto 2</span></span>
+                  <span class="collage-tile"><span class="collage-label">Foto 3</span></span>
+                  <span class="collage-tile"><span class="collage-label">Foto 4</span></span>
+                </span>
               </div>
             </div>
             <div class="hero-caption">
-              <span>Obra destacada</span>
+            <span>Cuatro detalles</span>
               <span class="caption-dash" aria-hidden="true"></span>
-              <span>Espacio reservado</span>
+            <span>Collage artesanal</span>
             </div>
             <span class="hero-art-note">La obra original, en primer plano.</span>
           </div>
@@ -70,10 +74,31 @@
         <a class="hero-scroll" href="#galeria" aria-label="Desplazarse a la galería"><span aria-hidden="true">↓</span></a>
       </section>
 
+      <section class="experience-section" id="experiencia" aria-labelledby="experience-title">
+        <div class="experience-inner section-shell">
+          <div class="experience-copy">
+            <p class="eyebrow eyebrow-dark"><span class="section-number">02</span> Arte hecho para ti</p>
+            <h2 id="experience-title">EXPERIENCIA ARTÍSTICA PERSONALIZADA</h2>
+            <p>Realza tu hogar con un cuadro único. Elige una obra de arte de mi colección o encarga una pieza personalizada: elige el tamaño, los colores y el estilo que mejor se adapten a tu espacio.</p>
+            <a class="text-link" href="#contacto">Hablemos de tu idea <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="experience-art" role="img" aria-label="Espacio reservado para una fotografía de una obra personalizada">
+            <span class="experience-art-index" aria-hidden="true">02</span>
+            <div class="experience-frame">
+              <div class="experience-photo-placeholder">
+                <span class="placeholder-mark" aria-hidden="true"></span>
+                <span class="canvas-label">Fotografía de la obra<br>por añadir</span>
+              </div>
+            </div>
+            <span class="experience-caption">Una pieza creada para tu espacio</span>
+          </div>
+        </div>
+      </section>
+
       <section class="gallery-section section-shell" id="galeria" aria-labelledby="gallery-title">
         <div class="section-heading">
           <div>
-            <p class="eyebrow eyebrow-dark"><span class="section-number">01</span> El espacio de las obras</p>
+            <p class="eyebrow eyebrow-dark"><span class="section-number">03</span> El espacio de las obras</p>
             <h2 id="gallery-title">La galería</h2>
           </div>
           <p class="section-intro">Cada cuadro merece tiempo y espacio. Las fichas están listas para recibir las fotografías reales y la información de cada obra.</p>
@@ -81,52 +106,78 @@
 
         <div class="gallery-toolbar" aria-label="Información de la galería">
           <span><span class="toolbar-dot" aria-hidden="true"></span> Espacios preparados</span>
-          <span>01 <span class="toolbar-divider" aria-hidden="true">/</span> 06</span>
+          <span aria-live="polite"><span data-gallery-page>01</span> <span class="toolbar-divider" aria-hidden="true">/</span> 03</span>
         </div>
 
-        <div class="work-grid" id="work-grid" aria-label="Espacios preparados para las obras">
-          <button class="work-card" type="button" data-work-index="0" aria-label="Abrir espacio para añadir la obra 1">
-            <span class="work-visual" data-work-media>
-              <span class="media-placeholder"><span class="placeholder-mark" aria-hidden="true"></span><span>Fotografía real<br>por añadir</span></span>
-              <span class="work-index">01</span>
-            </span>
-            <span class="work-meta"><span class="work-kicker">Espacio preparado</span><span class="work-title" data-work-title>Añadir título de la obra</span><span class="work-open">Ver ficha <span aria-hidden="true">↗</span></span></span>
-          </button>
-          <button class="work-card" type="button" data-work-index="1" aria-label="Abrir espacio para añadir la obra 2">
-            <span class="work-visual" data-work-media>
-              <span class="media-placeholder"><span class="placeholder-mark" aria-hidden="true"></span><span>Fotografía real<br>por añadir</span></span>
-              <span class="work-index">02</span>
-            </span>
-            <span class="work-meta"><span class="work-kicker">Espacio preparado</span><span class="work-title" data-work-title>Añadir título de la obra</span><span class="work-open">Ver ficha <span aria-hidden="true">↗</span></span></span>
-          </button>
-          <button class="work-card" type="button" data-work-index="2" aria-label="Abrir espacio para añadir la obra 3">
-            <span class="work-visual" data-work-media>
-              <span class="media-placeholder"><span class="placeholder-mark" aria-hidden="true"></span><span>Fotografía real<br>por añadir</span></span>
-              <span class="work-index">03</span>
-            </span>
-            <span class="work-meta"><span class="work-kicker">Espacio preparado</span><span class="work-title" data-work-title>Añadir título de la obra</span><span class="work-open">Ver ficha <span aria-hidden="true">↗</span></span></span>
-          </button>
-          <button class="work-card" type="button" data-work-index="3" aria-label="Abrir espacio para añadir la obra 4">
-            <span class="work-visual" data-work-media>
-              <span class="media-placeholder"><span class="placeholder-mark" aria-hidden="true"></span><span>Fotografía real<br>por añadir</span></span>
-              <span class="work-index">04</span>
-            </span>
-            <span class="work-meta"><span class="work-kicker">Espacio preparado</span><span class="work-title" data-work-title>Añadir título de la obra</span><span class="work-open">Ver ficha <span aria-hidden="true">↗</span></span></span>
-          </button>
-          <button class="work-card" type="button" data-work-index="4" aria-label="Abrir espacio para añadir la obra 5">
-            <span class="work-visual" data-work-media>
-              <span class="media-placeholder"><span class="placeholder-mark" aria-hidden="true"></span><span>Fotografía real<br>por añadir</span></span>
-              <span class="work-index">05</span>
-            </span>
-            <span class="work-meta"><span class="work-kicker">Espacio preparado</span><span class="work-title" data-work-title>Añadir título de la obra</span><span class="work-open">Ver ficha <span aria-hidden="true">↗</span></span></span>
-          </button>
-          <button class="work-card" type="button" data-work-index="5" aria-label="Abrir espacio para añadir la obra 6">
-            <span class="work-visual" data-work-media>
-              <span class="media-placeholder"><span class="placeholder-mark" aria-hidden="true"></span><span>Fotografía real<br>por añadir</span></span>
-              <span class="work-index">06</span>
-            </span>
-            <span class="work-meta"><span class="work-kicker">Espacio preparado</span><span class="work-title" data-work-title>Añadir título de la obra</span><span class="work-open">Ver ficha <span aria-hidden="true">↗</span></span></span>
-          </button>
+        <div class="gallery-carousel" aria-label="Galería de arte en tres diapositivas">
+          <div class="gallery-slide" data-gallery-slide="0" aria-label="Diapositiva 1 de 3">
+            <div class="work-grid" id="work-grid" aria-label="Obras de la primera diapositiva">
+              <button class="work-card" type="button" data-work-index="0" aria-label="Abrir ficha de la obra 1">
+                <span class="work-visual" data-work-media>
+                  <span class="artwork-collage" aria-hidden="true">
+                    <span class="collage-tile"><span class="collage-label">Foto 1</span></span>
+                    <span class="collage-tile"><span class="collage-label">Foto 2</span></span>
+                    <span class="collage-tile"><span class="collage-label">Foto 3</span></span>
+                    <span class="collage-tile"><span class="collage-label">Foto 4</span></span>
+                  </span>
+                  <span class="work-index">01</span>
+                </span>
+                <span class="work-meta"><span class="work-kicker">Espacio preparado</span><span class="work-title" data-work-title>Añadir título de la obra</span><span class="work-open">Ver ficha <span aria-hidden="true">↗</span></span></span>
+              </button>
+              <button class="work-card" type="button" data-work-index="1" aria-label="Abrir ficha de la obra 2">
+                <span class="work-visual" data-work-media><span class="media-placeholder"><span class="placeholder-mark" aria-hidden="true"></span><span>Fotografía real<br>por añadir</span></span><span class="work-index">02</span></span>
+                <span class="work-meta"><span class="work-kicker">Espacio preparado</span><span class="work-title" data-work-title>Añadir título de la obra</span><span class="work-open">Ver ficha <span aria-hidden="true">↗</span></span></span>
+              </button>
+              <button class="work-card" type="button" data-work-index="2" aria-label="Abrir ficha de la obra 3">
+                <span class="work-visual" data-work-media><span class="media-placeholder"><span class="placeholder-mark" aria-hidden="true"></span><span>Fotografía real<br>por añadir</span></span><span class="work-index">03</span></span>
+                <span class="work-meta"><span class="work-kicker">Espacio preparado</span><span class="work-title" data-work-title>Añadir título de la obra</span><span class="work-open">Ver ficha <span aria-hidden="true">↗</span></span></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-slide" data-gallery-slide="1" aria-label="Diapositiva 2 de 3" hidden>
+            <div class="work-grid" aria-label="Obras de la segunda diapositiva">
+              <button class="work-card" type="button" data-work-index="3" aria-label="Abrir ficha de la obra 4">
+                <span class="work-visual" data-work-media><span class="media-placeholder"><span class="placeholder-mark" aria-hidden="true"></span><span>Fotografía real<br>por añadir</span></span><span class="work-index">04</span></span>
+                <span class="work-meta"><span class="work-kicker">Espacio preparado</span><span class="work-title" data-work-title>Añadir título de la obra</span><span class="work-open">Ver ficha <span aria-hidden="true">↗</span></span></span>
+              </button>
+              <button class="work-card" type="button" data-work-index="4" aria-label="Abrir ficha de la obra 5">
+                <span class="work-visual" data-work-media><span class="media-placeholder"><span class="placeholder-mark" aria-hidden="true"></span><span>Fotografía real<br>por añadir</span></span><span class="work-index">05</span></span>
+                <span class="work-meta"><span class="work-kicker">Espacio preparado</span><span class="work-title" data-work-title>Añadir título de la obra</span><span class="work-open">Ver ficha <span aria-hidden="true">↗</span></span></span>
+              </button>
+              <button class="work-card" type="button" data-work-index="5" aria-label="Abrir ficha de la obra 6">
+                <span class="work-visual" data-work-media><span class="media-placeholder"><span class="placeholder-mark" aria-hidden="true"></span><span>Fotografía real<br>por añadir</span></span><span class="work-index">06</span></span>
+                <span class="work-meta"><span class="work-kicker">Espacio preparado</span><span class="work-title" data-work-title>Añadir título de la obra</span><span class="work-open">Ver ficha <span aria-hidden="true">↗</span></span></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-slide" data-gallery-slide="2" aria-label="Diapositiva 3 de 3" hidden>
+            <div class="work-grid" aria-label="Obras de la tercera diapositiva">
+              <button class="work-card" type="button" data-work-index="6" aria-label="Abrir ficha de la obra 7">
+                <span class="work-visual" data-work-media><span class="media-placeholder"><span class="placeholder-mark" aria-hidden="true"></span><span>Fotografía real<br>por añadir</span></span><span class="work-index">07</span></span>
+                <span class="work-meta"><span class="work-kicker">Espacio preparado</span><span class="work-title" data-work-title>Añadir título de la obra</span><span class="work-open">Ver ficha <span aria-hidden="true">↗</span></span></span>
+              </button>
+              <button class="work-card" type="button" data-work-index="7" aria-label="Abrir ficha de la obra 8">
+                <span class="work-visual" data-work-media><span class="media-placeholder"><span class="placeholder-mark" aria-hidden="true"></span><span>Fotografía real<br>por añadir</span></span><span class="work-index">08</span></span>
+                <span class="work-meta"><span class="work-kicker">Espacio preparado</span><span class="work-title" data-work-title>Añadir título de la obra</span><span class="work-open">Ver ficha <span aria-hidden="true">↗</span></span></span>
+              </button>
+              <button class="work-card" type="button" data-work-index="8" aria-label="Abrir ficha de la obra 9">
+                <span class="work-visual" data-work-media><span class="media-placeholder"><span class="placeholder-mark" aria-hidden="true"></span><span>Fotografía real<br>por añadir</span></span><span class="work-index">09</span></span>
+                <span class="work-meta"><span class="work-kicker">Espacio preparado</span><span class="work-title" data-work-title>Añadir título de la obra</span><span class="work-open">Ver ficha <span aria-hidden="true">↗</span></span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-controls" role="group" aria-label="Controles de la galería">
+          <button class="gallery-arrow" type="button" data-gallery-prev aria-label="Diapositiva anterior" disabled><span aria-hidden="true">←</span> Anterior</button>
+          <div class="gallery-pagination" role="group" aria-label="Elegir diapositiva">
+            <button type="button" data-gallery-page-button="0" aria-label="Mostrar diapositiva 1" aria-current="true">01</button>
+            <button type="button" data-gallery-page-button="1" aria-label="Mostrar diapositiva 2">02</button>
+            <button type="button" data-gallery-page-button="2" aria-label="Mostrar diapositiva 3">03</button>
+          </div>
+          <button class="gallery-arrow" type="button" data-gallery-next aria-label="Diapositiva siguiente">Siguiente <span aria-hidden="true">→</span></button>
         </div>
 
         <p class="gallery-footnote"><span aria-hidden="true">✳</span> Las fichas vacías son marcadores de contenido, no imágenes de obras.</p>
@@ -134,11 +185,11 @@
 
       <section class="artist-section" id="autora" aria-labelledby="artist-title">
         <div class="artist-inner section-shell">
-          <div class="artist-index" aria-hidden="true">02 <span></span> AUTORA</div>
-          <div class="artist-monogram" aria-hidden="true">ES</div>
+          <div class="artist-index" aria-hidden="true">04 <span></span> AUTORA</div>
+          <div class="artist-monogram" aria-hidden="true">EM</div>
           <div class="artist-copy">
             <p class="eyebrow eyebrow-dark">Sobre la autora</p>
-            <h2 id="artist-title">Eva María<br><em>Sopeña Torres</em></h2>
+            <h2 id="artist-title">Eva María</h2>
             <p class="artist-pending"><span class="pending-mark" aria-hidden="true"></span> Presentación personal pendiente</p>
             <p class="artist-description">Este espacio queda reservado para compartir su trayectoria, su proceso artístico y las historias que acompañan a cada cuadro.</p>
             <a class="text-link" href="#contacto">Contactar con Eva <span aria-hidden="true">↗</span></a>
@@ -153,32 +204,34 @@
 
       <section class="contact-section section-shell" id="contacto" aria-labelledby="contact-title">
         <div class="contact-heading">
-          <p class="eyebrow eyebrow-dark"><span class="section-number">03</span> Hablemos</p>
+          <p class="eyebrow eyebrow-dark"><span class="section-number">05</span> Hablemos</p>
           <h2 id="contact-title">Una conversación<br><em>empieza aquí.</em></h2>
-          <p>Para consultas sobre las obras, puedes contactar directamente con Eva por teléfono, correo electrónico o Instagram.</p>
+          <p>Para consultas sobre las obras, puedes contactar directamente con Eva por teléfono.</p>
         </div>
         <div class="contact-card">
-          <div class="contact-card-top"><span class="contact-symbol" aria-hidden="true">ES</span><span class="contact-label">Contacto directo</span></div>
-          <p class="contact-name">Eva María Sopeña Torres</p>
+          <div class="contact-card-top"><span class="contact-symbol" aria-hidden="true">EM</span><span class="contact-label">Contacto directo</span></div>
+          <p class="contact-name">Eva María</p>
           <a class="contact-phone" href="tel:+34620260933">620 260 933 <span aria-hidden="true">↗</span></a>
           <a class="button button-dark" href="tel:+34620260933">Llamar por teléfono <span aria-hidden="true">↗</span></a>
           <div class="contact-details" aria-label="Correo electrónico e Instagram">
             <div><span>Correo electrónico</span><a href="mailto:evamariaartestudio@gmail.com">evamariaartestudio@gmail.com</a></div>
             <div><span>Instagram</span><a href="https://www.instagram.com/evamariartestudio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @evamariartestudio, abre en una pestaña nueva">@evamariartestudio</a></div>
+            <div><span>Ubicación</span><span>Opcional</span></div>
+            <div><span>Otros datos</span><span>Por añadir</span></div>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <a class="footer-brand" href="#inicio">Eva María Sopeña Torres <span aria-hidden="true">·</span> Galería</a>
+      <a class="footer-brand" href="#inicio">Eva María <span aria-hidden="true">·</span> Galería</a>
       <span class="footer-note">Un espacio para sus cuadros.</span>
       <a class="footer-top" href="#inicio">Volver arriba <span aria-hidden="true">↑</span></a>
     </footer>
 
     <dialog class="work-dialog" id="work-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
       <div class="dialog-topline">
-        <span class="dialog-brand"><span class="brand-mark" aria-hidden="true">ES</span> Galería de Eva María Sopeña Torres</span>
+        <span class="dialog-brand"><span class="brand-mark" aria-hidden="true">EM</span> Galería de Eva María</span>
         <button class="dialog-close" type="button" data-dialog-close aria-label="Cerrar ficha"><span aria-hidden="true">×</span></button>
       </div>
       <div class="dialog-main">

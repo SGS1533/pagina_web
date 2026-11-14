@@ -1,6 +1,9 @@
 "use strict";
 
 const artworkSlots = [
+  { images: ["", "", "", ""], title: "", description: "" },
+  { image: "", alt: "", title: "", description: "" },
+  { image: "", alt: "", title: "", description: "" },
   { image: "", alt: "", title: "", description: "" },
   { image: "", alt: "", title: "", description: "" },
   { image: "", alt: "", title: "", description: "" },
@@ -10,6 +13,12 @@ const artworkSlots = [
 ];
 
 const workCards = Array.from(document.querySelectorAll(".work-card"));
+const gallerySlides = Array.from(document.querySelectorAll("[data-gallery-slide]"));
+const galleryPage = document.querySelector("[data-gallery-page]");
+const galleryPreviousButton = document.querySelector("[data-gallery-prev]");
+const galleryNextButton = document.querySelector("[data-gallery-next]");
+const galleryPageButtons = Array.from(document.querySelectorAll("[data-gallery-page-button]"));
+const heroCollage = document.querySelector("[data-hero-collage]");
 const workDialog = document.querySelector("#work-dialog");
 const dialogTitle = document.querySelector("#dialog-title");
 const dialogDescription = document.querySelector("#dialog-description");
@@ -24,6 +33,7 @@ const primaryNav = document.querySelector("#primary-nav");
 
 let activeIndex = 0;
 let lastTrigger = null;
+let activeSlide = 0;
 
 function formatIndex(index) {
   return String(index + 1).padStart(2, "0");
@@ -33,28 +43,69 @@ function getArtwork(index) {
   return artworkSlots[index] ?? {};
 }
 
-function createArtworkImage(artwork, className) {
-  if (!artwork.image) return null;
-
+function createArtworkImage(source, alt, className = "") {
   const image = document.createElement("img");
-  image.src = artwork.image;
-  image.alt = artwork.alt || artwork.title || "Fotografía de una obra de Eva María Sopeña Torres";
+  image.src = source;
+  image.alt = alt || "Fotografía de una obra de Eva María";
   image.loading = "lazy";
   image.decoding = "async";
   image.className = className;
   return image;
 }
 
+function createArtworkPlaceholder(label = "Fotografía real") {
+  const placeholder = document.createElement("span");
+  placeholder.className = "media-placeholder";
+  const mark = document.createElement("span");
+  mark.className = "placeholder-mark";
+  mark.setAttribute("aria-hidden", "true");
+  const caption = document.createElement("span");
+  caption.append(label, document.createElement("br"), "por añadir");
+  placeholder.append(mark, caption);
+  return placeholder;
+}
+
+function createArtworkMedia(artwork) {
+  const sources = Array.isArray(artwork.images) ? artwork.images : [artwork.image || ""];
+
+  if (sources.length > 1) {
+    const collage = document.createElement("span");
+    collage.className = "artwork-collage";
+    collage.setAttribute("aria-hidden", "true");
+
+    sources.forEach((source, index) => {
+      const tile = document.createElement("span");
+      tile.className = "collage-tile";
+      if (source) {
+        tile.append(createArtworkImage(source, artwork.alts?.[index] || artwork.title));
+      } else {
+        tile.append(createArtworkPlaceholder(`Foto ${index + 1}`));
+      }
+      collage.append(tile);
+    });
+
+    return collage;
+  }
+
+  if (sources[0]) {
+    return createArtworkImage(sources[0], artwork.alt || artwork.title);
+  }
+
+  return createArtworkPlaceholder();
+}
+
+function renderArtworkMedia(container, artwork) {
+  const indexLabel = container.querySelector(".work-index");
+  const media = createArtworkMedia(artwork);
+  container.replaceChildren(media);
+  if (indexLabel) container.append(indexLabel);
+}
+
 function updateCard(card, index) {
   const artwork = getArtwork(index);
   const title = artwork.title.trim() || "Añadir título de la obra";
   const media = card.querySelector("[data-work-media]");
-  const image = createArtworkImage(artwork, "");
-
-  if (image) {
-    media.querySelector(".media-placeholder")?.remove();
-    media.prepend(image);
-  }
+  renderArtworkMedia(media, artwork);
 
   card.querySelector("[data-work-title]").textContent = title;
   card.setAttribute("aria-label", `Abrir ficha: ${artwork.title.trim() || `espacio para la obra ${formatIndex(index)}`}`);
@@ -64,7 +115,6 @@ function updateDialog() {
   const artwork = getArtwork(activeIndex);
   const title = artwork.title.trim() || "Añadir título de la obra";
   const description = artwork.description.trim() || "La descripción de la obra se añadirá aquí.";
-  const image = createArtworkImage(artwork, "");
 
   dialogIndex.textContent = formatIndex(activeIndex);
   dialogTitle.textContent = title;
@@ -76,19 +126,7 @@ function updateDialog() {
   separator.textContent = "/";
   dialogCount.append(separator, document.createTextNode(" " + formatIndex(artworkSlots.length)));
 
-  if (image) {
-    dialogMedia.replaceChildren(image);
-  } else {
-    const placeholder = document.createElement("span");
-    placeholder.className = "media-placeholder";
-    const mark = document.createElement("span");
-    mark.className = "placeholder-mark";
-    mark.setAttribute("aria-hidden", "true");
-    const label = document.createElement("span");
-    label.append("Fotografía real", document.createElement("br"), "por añadir");
-    placeholder.append(mark, label);
-    dialogMedia.replaceChildren(placeholder);
-  }
+  dialogMedia.replaceChildren(createArtworkMedia(artwork));
 
   previousButton.disabled = activeIndex === 0;
   nextButton.disabled = activeIndex === artworkSlots.length - 1;
@@ -108,10 +146,40 @@ function closeMenu() {
   primaryNav.classList.remove("is-open");
 }
 
+function showGallerySlide(index) {
+  activeSlide = Math.max(0, Math.min(index, gallerySlides.length - 1));
+  gallerySlides.forEach((slide, slideIndex) => {
+    const isActive = slideIndex === activeSlide;
+    slide.hidden = !isActive;
+    slide.setAttribute("aria-hidden", String(!isActive));
+    slide.inert = !isActive;
+  });
+
+  galleryPage.textContent = formatIndex(activeSlide);
+  galleryPreviousButton.disabled = activeSlide === 0;
+  galleryNextButton.disabled = activeSlide === gallerySlides.length - 1;
+  galleryPageButtons.forEach((button, buttonIndex) => {
+    if (buttonIndex === activeSlide) {
+      button.setAttribute("aria-current", "page");
+    } else {
+      button.removeAttribute("aria-current");
+    }
+  });
+}
+
 workCards.forEach((card) => {
   const index = Number(card.dataset.workIndex);
   updateCard(card, index);
   card.addEventListener("click", () => openArtwork(index, card));
+});
+
+renderArtworkMedia(heroCollage, artworkSlots[0]);
+showGallerySlide(0);
+
+galleryPreviousButton.addEventListener("click", () => showGallerySlide(activeSlide - 1));
+galleryNextButton.addEventListener("click", () => showGallerySlide(activeSlide + 1));
+galleryPageButtons.forEach((button) => {
+  button.addEventListener("click", () => showGallerySlide(Number(button.dataset.galleryPageButton)));
 });
 
 previousButton.addEventListener("click", () => {
@@ -167,7 +235,7 @@ window.addEventListener("resize", () => {
 });
 
 const brushRevealTargets = document.querySelectorAll(
-  ".hero-copy, .hero-art, .section-heading, .gallery-toolbar, .work-card, .gallery-footnote, .artist-index, .artist-monogram, .artist-copy, .artist-note, .contact-heading, .contact-card"
+  ".hero-copy, .hero-art, .experience-copy, .experience-art, .section-heading, .gallery-toolbar, .work-card, .gallery-controls, .gallery-footnote, .artist-index, .artist-monogram, .artist-copy, .artist-note, .contact-heading, .contact-card"
 );
 const supportsBrushReveal =
   "IntersectionObserver" in window &&
