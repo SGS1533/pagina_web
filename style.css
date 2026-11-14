@@ -953,9 +953,23 @@ p {
   font-size: .68rem;
 }
 
-.contact-details div span:last-child {
+.contact-details div > :last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
   color: var(--ink-soft);
   text-align: right;
+}
+
+.contact-details a {
+  text-decoration: underline;
+  text-decoration-color: rgba(32, 42, 38, .25);
+  text-underline-offset: .2em;
+  transition: color .2s ease, text-decoration-color .2s ease;
+}
+
+.contact-details a:hover {
+  color: var(--accent-deep);
+  text-decoration-color: currentColor;
 }
 
 .site-footer {
