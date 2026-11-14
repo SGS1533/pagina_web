@@ -165,3 +165,38 @@ primaryNav.querySelectorAll("a").forEach((link) => {
 window.addEventListener("resize", () => {
   if (window.matchMedia("(min-width: 701px)").matches) closeMenu();
 });
+
+const brushRevealTargets = document.querySelectorAll(
+  ".hero-copy, .hero-art, .section-heading, .gallery-toolbar, .work-card, .gallery-footnote, .artist-index, .artist-monogram, .artist-copy, .artist-note, .contact-heading, .contact-card"
+);
+const supportsBrushReveal =
+  "IntersectionObserver" in window &&
+  window.CSS?.supports("clip-path", "polygon(0 0, 100% 0, 100% 100%, 0 100%)");
+
+if (supportsBrushReveal && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.documentElement.classList.add("has-brush-reveal");
+
+  let workCardIndex = 0;
+  brushRevealTargets.forEach((target) => {
+    target.classList.add("brush-reveal");
+
+    if (target.matches(".work-card")) {
+      target.style.setProperty("--brush-delay", `${workCardIndex * 75}ms`);
+      workCardIndex += 1;
+    }
+  });
+
+  const brushObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.add("is-painted");
+        observer.unobserve(entry.target);
+      });
+    },
+    { rootMargin: "0px 0px 10% 0px", threshold: 0.12 }
+  );
+
+  brushRevealTargets.forEach((target) => brushObserver.observe(target));
+}

@@ -1164,6 +1164,113 @@ p {
   text-align: center;
 }
 
+.has-brush-reveal .brush-reveal {
+  position: relative;
+  opacity: 0;
+}
+
+.has-brush-reveal .artist-index.brush-reveal {
+  position: absolute;
+}
+
+.has-brush-reveal .hero-art {
+  --brush-delay: 120ms;
+}
+
+.has-brush-reveal .brush-reveal.is-painted {
+  animation: brush-paint-in 1.12s var(--ease) var(--brush-delay, 0ms) both;
+}
+
+.has-brush-reveal .brush-reveal::after {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(189, 104, 78, .08) 18%,
+    rgba(189, 104, 78, .23) 48%,
+    rgba(183, 192, 179, .2) 76%,
+    transparent 100%
+  );
+  clip-path: polygon(
+    0 0, 5% 2%, 10% .5%, 16% 2.5%, 23% 1%, 30% 3%, 37% .5%,
+    45% 2.5%, 52% 1%, 60% 3%, 68% .5%, 76% 2%, 84% .5%, 92% 2%,
+    100% 0, 100% 5%, 94% 4%, 87% 6%, 79% 4%, 71% 6%, 63% 4%,
+    55% 5.5%, 47% 4%, 39% 6%, 31% 4%, 23% 5.5%, 15% 4%, 7% 6%, 0 4%
+  );
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+}
+
+.has-brush-reveal .brush-reveal.is-painted::after {
+  animation: brush-front 1.12s var(--ease) var(--brush-delay, 0ms) both;
+}
+
+@keyframes brush-paint-in {
+  0% {
+    clip-path: polygon(
+      0 0, 100% 0, 100% 0, 92% 0, 84% 0, 76% 0, 68% 0, 60% 0,
+      52% 0, 44% 0, 36% 0, 28% 0, 20% 0, 12% 0, 0 0
+    );
+    opacity: 0;
+  }
+  36% {
+    clip-path: polygon(
+      0 0, 100% 0, 100% 39%, 93% 43%, 86% 37%, 78% 42%, 70% 36%,
+      62% 43%, 54% 37%, 46% 42%, 38% 37%, 30% 44%, 22% 38%, 14% 42%, 0 39%
+    );
+    opacity: 1;
+  }
+  74% {
+    clip-path: polygon(
+      0 0, 100% 0, 100% 78%, 93% 74%, 86% 82%, 78% 76%, 70% 83%,
+      62% 76%, 54% 83%, 46% 76%, 38% 82%, 30% 75%, 22% 83%, 14% 77%, 0 81%
+    );
+    opacity: 1;
+  }
+  100% {
+    clip-path: polygon(
+      -4% -4%, 104% -4%, 104% 104%, 93% 102%, 85% 104%, 77% 102%,
+      69% 104%, 61% 102%, 53% 104%, 45% 102%, 37% 104%, 29% 102%,
+      21% 104%, 13% 102%, -4% 104%
+    );
+    opacity: 1;
+  }
+}
+
+@keyframes brush-front {
+  0% {
+    transform: translateY(-5%);
+    opacity: 0;
+  }
+  14% {
+    opacity: .7;
+  }
+  36% {
+    transform: translateY(38%);
+    opacity: .62;
+  }
+  74% {
+    transform: translateY(78%);
+    opacity: .42;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .has-brush-reveal .brush-reveal,
+  .has-brush-reveal .brush-reveal::after {
+    animation: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+  }
+}
+
 @media (min-width: 1500px) {
   .hero-inner {
     gap: 8rem;
