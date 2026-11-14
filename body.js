@@ -74,7 +74,7 @@ function updateDialog() {
   const separator = document.createElement("span");
   separator.setAttribute("aria-hidden", "true");
   separator.textContent = "/";
-  dialogCount.append(separator, document.createTextNode(" " + formatIndex(artworkSlots.length - 1)));
+  dialogCount.append(separator, document.createTextNode(" " + formatIndex(artworkSlots.length)));
 
   if (image) {
     dialogMedia.replaceChildren(image);
