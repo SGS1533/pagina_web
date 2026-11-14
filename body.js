@@ -1,13 +1,63 @@
 "use strict";
 
+const heroArtwork = {
+  images: ["fotos/FOTO8.jpg", "fotos/FOTO4.jpg", "fotos/FOTO1.jpg", "fotos/FOTO3.jpg"],
+  alts: [
+    "Cuadro azul con motivos solares",
+    "Pintura de un árbol colorido en una sala",
+    "Cuadro figurativo en blanco y negro",
+    "Composición azul de líneas y edificios"
+  ]
+};
+
 const artworkSlots = [
-  { images: ["", "", "", ""], title: "", description: "" },
-  { image: "", alt: "", title: "", description: "" },
-  { image: "", alt: "", title: "", description: "" },
-  { image: "", alt: "", title: "", description: "" },
-  { image: "", alt: "", title: "", description: "" },
-  { image: "", alt: "", title: "", description: "" },
-  { image: "", alt: "", title: "", description: "" },
+  {
+    images: ["fotos/FOTO10.jpg", "fotos/FOTO5.jpg", "fotos/FOTO6.jpg", "fotos/FOTO12.jpg"],
+    alts: [
+      "Retrato pintado de un lobo",
+      "Composición geométrica de colores",
+      "Ilustración botánica en tonos rosados y violetas",
+      "Rama con flores rosas"
+    ],
+    title: "Selección de obras",
+    description: "Cuatro obras de la colección reunidas en una sola imagen."
+  },
+  {
+    image: "fotos/FOTO2.jpg",
+    alt: "Paisaje pintado con una torre entre casas y campos",
+    title: "Paisaje con torre",
+    description: "Un paisaje de casas y campos bajo una torre."
+  },
+  {
+    image: "fotos/FOTO9.jpg",
+    alt: "Composición abstracta con trazos naranjas, azules y blancos",
+    title: "Ritmo de color",
+    description: "Trazos en tonos naranjas, azules y blancos."
+  },
+  {
+    image: "fotos/FOTO11.jpg",
+    alt: "Figura geométrica pintada junto a varias mariposas",
+    title: "Figura y mariposas",
+    description: "Una figura geométrica acompañada de mariposas."
+  },
+  {
+    image: "fotos/FOTO7.jpg",
+    alt: "Dos piezas circulares en tonos dorados y naturales",
+    title: "Relieves dorados",
+    description: "Dos formas circulares en tonos dorados y naturales."
+  },
+  {
+    image: "fotos/FOTO14.jpg",
+    alt: "Cuadro de un koala entre ramas y hojas",
+    title: "Koala entre hojas",
+    description: "Un koala pintado entre ramas y hojas."
+  },
+  {
+    image: "fotos/FOTO13.jpg",
+    alt: "Escena ilustrada de animales tocando música",
+    title: "Música en casa",
+    description: "Una escena ilustrada de animales tocando música."
+  },
   { image: "", alt: "", title: "", description: "" },
   { image: "", alt: "", title: "", description: "" }
 ];
@@ -22,6 +72,7 @@ const heroCollage = document.querySelector("[data-hero-collage]");
 const workDialog = document.querySelector("#work-dialog");
 const dialogTitle = document.querySelector("#dialog-title");
 const dialogDescription = document.querySelector("#dialog-description");
+const dialogPendingText = document.querySelector("[data-dialog-pending-text]");
 const dialogIndex = document.querySelector("[data-dialog-index]");
 const dialogCount = document.querySelector("[data-dialog-count]");
 const dialogMedia = document.querySelector("[data-dialog-media]");
@@ -104,9 +155,13 @@ function renderArtworkMedia(container, artwork) {
 function updateCard(card, index) {
   const artwork = getArtwork(index);
   const title = artwork.title.trim() || "Añadir título de la obra";
+  const hasPhoto = Array.isArray(artwork.images)
+    ? artwork.images.some(Boolean)
+    : Boolean(artwork.image);
   const media = card.querySelector("[data-work-media]");
   renderArtworkMedia(media, artwork);
 
+  card.querySelector(".work-kicker").textContent = hasPhoto ? "Obra de la colección" : "Espacio preparado";
   card.querySelector("[data-work-title]").textContent = title;
   card.setAttribute("aria-label", `Abrir ficha: ${artwork.title.trim() || `espacio para la obra ${formatIndex(index)}`}`);
 }
@@ -119,6 +174,7 @@ function updateDialog() {
   dialogIndex.textContent = formatIndex(activeIndex);
   dialogTitle.textContent = title;
   dialogDescription.textContent = description;
+  dialogPendingText.textContent = artwork.description.trim() ? "Información de la obra" : "Contenido pendiente";
   dialogCount.replaceChildren();
   dialogCount.append(document.createTextNode(formatIndex(activeIndex) + " "));
   const separator = document.createElement("span");
@@ -173,7 +229,7 @@ workCards.forEach((card) => {
   card.addEventListener("click", () => openArtwork(index, card));
 });
 
-renderArtworkMedia(heroCollage, artworkSlots[0]);
+renderArtworkMedia(heroCollage, heroArtwork);
 showGallerySlide(0);
 
 galleryPreviousButton.addEventListener("click", () => showGallerySlide(activeSlide - 1));

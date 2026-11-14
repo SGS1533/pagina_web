@@ -1287,6 +1287,10 @@ p {
   background: #e2ded4;
 }
 
+.dialog-visual:has(> .artwork-collage) {
+  aspect-ratio: 1 / 1;
+}
+
 .dialog-visual img,
 .work-visual img {
   display: block;
