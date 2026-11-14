@@ -58,8 +58,18 @@ const artworkSlots = [
     title: "Música en casa",
     description: "Una escena ilustrada de animales tocando música."
   },
-  { image: "", alt: "", title: "", description: "" },
-  { image: "", alt: "", title: "", description: "" }
+  {
+    image: "fotos/IMG_1225.JPG",
+    alt: "Cuadro abstracto de formas y texturas en tonos rojos y terracota",
+    title: "Formas en rojo",
+    description: "Una composición abstracta de formas y texturas en tonos rojos."
+  },
+  {
+    image: "fotos/IMG_1235.JPG",
+    alt: "Cuadro de un rostro rodeado de formas geométricas en tonos azules y ocres",
+    title: "Rostro y geometría",
+    description: "Un rostro integrado en una composición de líneas y formas geométricas."
+  }
 ];
 
 const workCards = Array.from(document.querySelectorAll(".work-card"));

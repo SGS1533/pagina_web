@@ -636,19 +636,11 @@ p {
   transform: rotate(-1.4deg);
 }
 
-.experience-photo-placeholder {
-  display: flex;
-  min-height: 350px;
+.experience-photo {
+  display: block;
+  width: 100%;
   aspect-ratio: 4 / 5;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, .48), transparent 42%),
-    #d5d1c6;
-  color: #535b52;
-  text-align: center;
+  object-fit: cover;
 }
 
 .experience-caption {
@@ -1656,10 +1648,6 @@ p {
 
   .experience-art {
     width: min(84%, 360px);
-  }
-
-  .experience-photo-placeholder {
-    min-height: 0;
   }
 
   .hero-frame {
